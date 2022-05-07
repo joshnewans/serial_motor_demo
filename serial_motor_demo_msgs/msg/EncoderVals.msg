@@ -1,0 +1,2 @@
+int32 mot_1_enc_val
+int32 mot_2_enc_val
