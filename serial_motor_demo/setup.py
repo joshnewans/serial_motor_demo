@@ -1,4 +1,6 @@
 from setuptools import setup
+import os
+from glob import glob
 
 package_name = 'serial_motor_demo'
 
@@ -8,8 +10,10 @@ setup(
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
+         ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # Include launch files
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -19,9 +23,11 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-            'gui = serial_motor_demo.gui:main',
-            'driver = serial_motor_demo.driver:main'
-        ],
-    },
+    'console_scripts': [
+        'gui = serial_motor_demo.gui:main',
+        'driver = serial_motor_demo.driver:main',
+        'motor_command_node = serial_motor_demo.motor_command_node:main'
+    ],
+},
+
 )

@@ -18,17 +18,17 @@ class MotorDriver(Node):
 
         # Setup parameters
 
-        self.declare_parameter('encoder_cpr', value=0)
+        self.declare_parameter('encoder_cpr', value=17200)
         if (self.get_parameter('encoder_cpr').value == 0):
             print("WARNING! ENCODER CPR SET TO 0!!")
 
 
-        self.declare_parameter('loop_rate', value=0)
+        self.declare_parameter('loop_rate', value=30)
         if (self.get_parameter('loop_rate').value == 0):
             print("WARNING! LOOP RATE SET TO 0!!")
 
 
-        self.declare_parameter('serial_port', value="/dev/ttyUSB0")
+        self.declare_parameter('serial_port', value="/dev/ttyACM0")
         self.serial_port = self.get_parameter('serial_port').value
 
 
