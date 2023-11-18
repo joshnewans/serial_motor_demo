@@ -8,6 +8,7 @@ setup(
     name=package_name,
     version='0.0.0',
     packages=[package_name],
+    py_modules=['resource.transformations'],
     data_files=[
         ('share/ament_index/resource_index/packages',
          ['resource/' + package_name]),
@@ -26,7 +27,8 @@ setup(
     'console_scripts': [
         'gui = serial_motor_demo.gui:main',
         'driver = serial_motor_demo.driver:main',
-        'motor_command_node = serial_motor_demo.motor_command_node:main'
+        'motor_command_node = serial_motor_demo.motor_command_node:main',
+        'wheels_odometry = serial_motor_demo.wheels_odometry:main',
     ],
 },
 
