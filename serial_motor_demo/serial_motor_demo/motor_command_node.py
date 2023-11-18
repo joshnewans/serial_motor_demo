@@ -29,8 +29,10 @@ class MotorCommandNode(Node):
 
             # Convert to motor commands based on your robot's kinematics
             # This is a simple differential drive example
-            wheel_radius = 0.0553  # meters, adjust based on your robot
-            wheel_distance = 0.284  # meters, adjust based on your robot
+            # Especificaciones del robot
+            wheel_radius = self.declare_parameter('wheel_radius', 0.0553).value
+            wheel_distance = self.declare_parameter('wheel_base', 0.284).value
+
             mot_1_speed = (speed - (rotation * wheel_distance / 2)) / wheel_radius
             mot_2_speed = (speed + (rotation * wheel_distance / 2)) / wheel_radius
             #convert to rad/s

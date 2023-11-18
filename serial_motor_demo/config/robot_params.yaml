@@ -1,0 +1,6 @@
+# robot_params.yaml
+wheel_odometry_node:
+  ros__parameters:
+    wheel_radius: 0.0553  # Meters
+    wheel_base: 0.284     # Meters
+    # Add other parameters as needed

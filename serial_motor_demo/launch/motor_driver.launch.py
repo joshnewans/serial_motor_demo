@@ -4,14 +4,23 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+import os
 
 def generate_launch_description():
+
+    config = os.path.join(
+        get_package_share_directory('serial_motor_demo'),
+        'config',
+        'robot_params.yaml'
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument(
-            'speed', default_value='0.5',
+            'speed', default_value='0.3',
             description='Speed for teleop_twist_keyboard'),
         DeclareLaunchArgument(
-            'turn', default_value='1.0',
+            'turn', default_value='0.5',
             description='Turn for teleop_twist_keyboard'),
         DeclareLaunchArgument(
             'serial_port', default_value='/dev/ttyACM0'),
@@ -42,6 +51,15 @@ def generate_launch_description():
             executable='motor_command_node',
             name='motor_command_node',
             output='screen',
+            parameters=[config],
             
+        ),
+
+        Node(
+            package='serial_motor_demo',
+            executable='wheels_odometry',
+            name='wheel_odometry_node',
+            output='screen',
+            parameters=[config],
         ),
     ])
