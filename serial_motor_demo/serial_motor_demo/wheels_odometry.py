@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist, Pose, Quaternion, Point, TransformStamped
 from nav_msgs.msg import Odometry
-from resource.transformations import euler2quaternion
+from serial_motor_demo.serial_motor_demo.utils.transformations import euler2quaternion
 from math import sin, cos
 import tf2_ros
 
