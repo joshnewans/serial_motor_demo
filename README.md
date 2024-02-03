@@ -4,6 +4,9 @@ This is demonstration of a ROS 2 interface to an Arduino running differential-dr
 
 The corresponding Arduino code can be found [here](https://github.com/joshnewans/ros_arduino_bridge), which is itself a fork of [this repo](https://github.com/hbrobotics/ros_arduino_bridge), which also contains a similar implementation for the ROS/Python/Client side (ROS 1 though).
 
+Remove deprecation warnings by downgrading setuptools:
+`pip install setuptools==58.2.0`
+
 ## Components
 
 The `serial_motor_demo` package consists of two nodes, `driver.py` and `gui.py`. The idea is that the driver can be run on an onboard PC inside a robot (e.g. a Raspberry Pi), interfacing with the lower-level hardware. The driver exposes motor control through ROS topics (see below), which are to be published by the user's software.
