@@ -23,7 +23,7 @@ def generate_launch_description():
             'turn', default_value='0.5',
             description='Turn for teleop_twist_keyboard'),
         DeclareLaunchArgument(
-            'serial_port', default_value='/dev/ttyACM0'),
+            'serial_port', default_value='/dev/ttyUSB0'),
 
         
         Node(

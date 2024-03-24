@@ -11,7 +11,7 @@ from serial_motor_demo_msgs.msg import MotorVels
 
 class OdometryNode(Node):
     def __init__(self):
-        super().__init__('odometry_node')
+        super().__init__('wheel_odometry_node')
         self.subscription = self.create_subscription(
             MotorVels, 'motor_vels', self.listener_callback, 10)
         self.publisher = self.create_publisher(Odometry, 'wheel_odom', 10)
@@ -28,7 +28,6 @@ class OdometryNode(Node):
         self.wheel_base = self.declare_parameter('wheel_base', 0.284).value
 
     def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%s"' % msg)
         current_time = self.get_clock().now()
         dt = (current_time - self.last_time).nanoseconds / 1e9
         self.last_time = current_time
